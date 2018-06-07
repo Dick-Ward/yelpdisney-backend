@@ -7,7 +7,6 @@ class CreateRestaurants < ActiveRecord::Migration[5.1]
       t.string :portion_size
       t.string :cost_code
       t.string :cuisine
-      t.string :phone_number
       t.string :entree_range
       t.string :parking
       t.string :bar
