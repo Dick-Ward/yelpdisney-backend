@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20180605203421) do
     t.string "portion_size"
     t.string "cost_code"
     t.string "cuisine"
-    t.string "phone_number"
     t.string "entree_range"
     t.string "parking"
     t.string "bar"
