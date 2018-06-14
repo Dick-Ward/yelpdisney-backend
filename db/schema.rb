@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180605203421) do
     t.string "sort_name"
     t.boolean "mobile_ordering"
     t.string "park"
+    t.string "resort_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

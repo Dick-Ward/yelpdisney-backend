@@ -39,6 +39,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.1]
       t.string :sort_name
       t.boolean :mobile_ordering
       t.string :park
+      t.string :resort_name, default: nil
       t.timestamps
     end
   end
