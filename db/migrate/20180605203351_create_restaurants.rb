@@ -17,12 +17,6 @@ class CreateRestaurants < ActiveRecord::Migration[5.1]
       t.string :lunch_hours
       t.string :dinner_hours
       t.string :house_specialties
-      t.string :adult_breakfast_menu_url
-      t.string :adult_lunch_menu_url
-      t.string :adult_dinner_menu_url
-      t.string :child_breakfast_menu_url
-      t.string :child_lunch_menu_url
-      t.string :child_dinner_menu_url
       t.boolean :requires_credit_card
       t.boolean :requires_pre_payment
       t.string :opened_on
