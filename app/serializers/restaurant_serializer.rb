@@ -1,5 +1,5 @@
 class RestaurantSerializer < ActiveModel::Serializer
-  attributes :average_rating :details
+  attributes :average_rating, :details
   has_many :reviews
 
   def details(*args)
