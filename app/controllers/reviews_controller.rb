@@ -7,9 +7,16 @@ class ReviewsController < ApplicationController
 
   def create
    review = Review.new(review_params)
+
+   restaurant = Restaurant.find(params[:restaurant_id])
    if review.save
-     render json: review
+     render json: restaurant
    end
+  end
+
+  def show
+    review = Review.find(params[:id])
+    render json: review
   end
 
   private
