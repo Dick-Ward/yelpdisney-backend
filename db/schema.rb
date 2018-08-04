@@ -54,7 +54,10 @@ ActiveRecord::Schema.define(version: 20180605203421) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
+    t.integer "quality"
+    t.integer "cleanliness"
+    t.integer "service"
+    t.integer "value"
     t.string "content"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
