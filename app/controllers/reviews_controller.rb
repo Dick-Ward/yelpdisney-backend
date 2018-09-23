@@ -19,9 +19,6 @@ class ReviewsController < ApplicationController
     render json: review
   end
 
-  def search
-    redirect to '/index'
-  end
 
   private
 
