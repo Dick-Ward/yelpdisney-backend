@@ -11,4 +11,18 @@ class RestaurantsController < ApplicationController
     render json: restaurant
   end
 
+  def search
+    if params[:park] != "all"
+      restaurants = Restaurant.all.select{|restaurant| restaurant.park == params[:park]}
+    else
+      restaurants = Restaurant.all
+    end
+    if params[:query] != "all"
+      restaurants = restaurants.select{|restaurant| restaurant.name.downcase.include?(params[:query].downcase)}
+    else
+      restaurants = restaurants
+    end
+      render json:restaurants
+  end
+
 end
