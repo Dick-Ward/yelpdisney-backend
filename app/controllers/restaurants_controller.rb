@@ -22,6 +22,7 @@ class RestaurantsController < ApplicationController
     else
       restaurants = restaurants
     end
+      restaurants = restaurants.sort{|a,b| a.name.gsub(/\W/, '') <=> b.name.gsub(/\W/, '')}
       render json:restaurants
   end
 
