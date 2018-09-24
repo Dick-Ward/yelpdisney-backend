@@ -58,18 +58,5 @@ def get_resort_dining
 end
 
 
-
 get_dining(park_list)
 get_resort_dining
-
-
-
-
-Review.create(rating: 5, content: "Awesome", restaurant_id: 192)
-Review.create(rating: 4, content: "Sporktastic", restaurant_id: 192)
-Review.create(rating: 3, content: "Middle of the road, yo", restaurant_id: 192)
-Review.create(rating: 2, content: "It ain't great", restaurant_id: 174)
-Review.create(rating: 1, content: "Garrrrbidge", restaurant_id: 174)
-Review.create(rating: 4, content: "Spectorqueular", restaurant_id: 174)
-Review.create(rating: 2, content: "S'ok", restaurant_id: 61)
-Review.create(rating: 5, content: "Slamazing", restaurant_id: 61)
