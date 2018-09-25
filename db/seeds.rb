@@ -60,3 +60,9 @@ end
 
 get_dining(park_list)
 get_resort_dining
+
+Restaurant.all.each do |restaurant|
+  if restaurant.cuisine == nil
+    restaurant.update(cuisine: "")
+  end
+end

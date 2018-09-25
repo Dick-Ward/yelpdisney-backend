@@ -12,8 +12,13 @@ class RestaurantsController < ApplicationController
   end
 
   def search
+    park_list = ["magic-kingdom", "epcot", "hollywood-studios", "animal-kingdom", "blizzard-beach", "typhoon-lagoon"]
     if params[:query] != "all"
-      restaurants = Restaurant.all.select{|restaurant| restaurant.name.downcase.include?(params[:query].downcase)}
+      restaurants = Restaurant.all.select do |restaurant|
+        if restaurant.name.downcase.include?(params[:query].downcase) || restaurant.cuisine.downcase.include?(params[:query].downcase)
+          true
+        end
+      end
     else
       restaurants = Restaurant.all
     end
