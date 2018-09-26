@@ -1,9 +1,8 @@
 class RestaurantsController < ApplicationController
 
   def index
-    restaurants = Restaurant.all.sort{|a,b| a.name.gsub(/\W/, '') <=> b.name.gsub(/\W/, '')}
-    restaurant_names = restaurants.map{|restaurant| {id: restaurant.id, name: restaurant.name, park:restaurant.park, resort_name: restaurant.resort_name, permalink: restaurant.permalink, cuisine:restaurant.cuisine}}
-    render json: restaurant_names
+    restaurants = Restaurant.all
+    render json: sort_and_strip(restaurants)
   end
 
   def show
@@ -22,8 +21,16 @@ class RestaurantsController < ApplicationController
     else
       restaurants = Restaurant.all
     end
-      restaurants = restaurants.sort{|a,b| a.name.gsub(/\W/, '') <=> b.name.gsub(/\W/, '')}
-      render json:restaurants
+      render json: sort_and_strip(restaurants)
   end
+
+  private
+
+  def sort_and_strip(restaurants)
+    restaurant_list = restaurants.sort{|a,b| a.name.gsub(/\W/, '') <=> b.name.gsub(/\W/, '')}
+    restaurant_names = restaurant_list.map{|restaurant| {id: restaurant.id, name: restaurant.name, park:restaurant.park, resort_name: restaurant.resort_name, permalink: restaurant.permalink, cuisine:restaurant.cuisine}}
+
+  end
+
 
 end
