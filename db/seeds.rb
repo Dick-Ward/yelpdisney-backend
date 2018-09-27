@@ -66,3 +66,6 @@ Restaurant.all.each do |restaurant|
     restaurant.update(cuisine: "")
   end
 end
+
+Restaurant.find(144).update(category_code: "food_cart")
+Restaurant.find(201).update(category_code: "room_service")
