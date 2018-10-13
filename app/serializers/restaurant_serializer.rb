@@ -1,8 +1,8 @@
 include ActionView::Helpers::NumberHelper
 
 class RestaurantSerializer < ActiveModel::Serializer
-  has_many :reviews
-  attributes :average_rating, :average_quality, :average_cleanliness, :average_service, :average_value, :id, :name, :permalink, :category_code, :portion_size, :cost_code, :cuisine, :entree_range, :parking, :bar, :wine_list, :dress, :awards, :breakfast_hours, :lunch_hours, :dinner_hours, :house_specialties, :requires_credit_card, :requires_pre_payment, :opened_on, :disney_permalink, :code, :short_name, :accepts_reservations, :kosher_available, :location_details, :operator_id, :operator_url, :operator_type, :walking_time_proxy_id, :sort_name, :mobile_ordering, :park, :resort_name
+  attributes :average_rating, :average_quality, :average_cleanliness, :average_service, :average_value, :id, :name, :permalink, :category_code, :portion_size, :cost_code, :cuisine, :entree_range, :parking, :bar, :wine_list, :dress, :awards, :breakfast_hours, :lunch_hours, :dinner_hours, :requires_credit_card, :requires_pre_payment, :opened_on, :disney_permalink, :accepts_reservations, :kosher_available, :location_details, :operator_url, :operator_type, :walking_time_proxy_id,  :mobile_ordering, :park, :resort_name, :reviews
+
 
   def average_rating
     average = (average_quality + average_cleanliness + average_service + average_value) / 4
@@ -36,6 +36,10 @@ class RestaurantSerializer < ActiveModel::Serializer
     else
       0
     end
+  end
+
+  def reviews
+    object.reviews.sort{|reviewa, reviewb| reviewb.created_at <=> reviewa.created_at}
   end
 
 end

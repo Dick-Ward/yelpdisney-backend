@@ -1,3 +1,4 @@
+
 require 'rest-client'
 
 park_list = ["magic-kingdom", "epcot", "hollywood-studios", "animal-kingdom", "blizzard-beach", "typhoon-lagoon"]
