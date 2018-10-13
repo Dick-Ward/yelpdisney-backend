@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create, :show]
 
   def create
     @user = User.find_by(username: user_login_params[:username])
@@ -10,6 +10,7 @@ class AuthController < ApplicationController
       render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
   end
+
 
   private
 
