@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  skip_before_action :authorized  only: [:index, :show]
+  skip_before_action :authorized
 
 
   def index
@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
 
   def create
    review = Review.new(review_params)
-
    restaurant = Restaurant.find(params[:restaurant_id])
    if review.save
      render json: restaurant
@@ -25,7 +24,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:quality, :cleanliness, :service, :value, :content, :restaurant_id)
+    params.require(:review).permit(:quality, :cleanliness, :service, :value, :content, :restaurant_id, :user_id)
   end
 
 end
