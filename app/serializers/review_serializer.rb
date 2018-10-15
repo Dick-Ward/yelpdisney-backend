@@ -10,4 +10,8 @@ class ReviewSerializer < ActiveModel::Serializer
     object.user.username
   end
 
+  def created_at
+    object.created_at.in_time_zone('Eastern Time (US & Canada)')
+  end
+
 end
