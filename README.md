@@ -1,24 +1,5 @@
-# README
+In Progress: a restaurant review site specifically for restaurants at Walt Disney World parks and resorts.  Version 1 (MVP) is completed as of 10/15/18, and I'm beginning on more functionality/style before I launch the app.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Trello board can be found at https://trello.com/b/AXPBRmjK
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Feel free to open issues!
