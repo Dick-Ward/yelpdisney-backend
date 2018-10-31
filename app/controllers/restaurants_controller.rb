@@ -29,8 +29,12 @@ class RestaurantsController < ApplicationController
 
   def sort_and_strip(restaurants)
     restaurant_list = restaurants.sort{|a,b| a.name.gsub(/\W/, '') <=> b.name.gsub(/\W/, '')}
-    restaurant_names = restaurant_list.map{|restaurant| {id: restaurant.id, name: restaurant.name, park:restaurant.park, resort_name: restaurant.resort_name, permalink: restaurant.permalink, cuisine:restaurant.cuisine, category_code: restaurant.category_code}}
+    restaurant_names = restaurant_list.map{|restaurant| {id: restaurant.id, name: restaurant.name, park:restaurant.park, resort_name: restaurant.resort_name, permalink: restaurant.permalink, cuisine:restaurant.cuisine, category_code: restaurant.category_code, average_rating: restaurant.average_rating }}
+  end
 
+  def average_rating
+    average = (average_quality + average_cleanliness + average_service + average_value) / 4
+    number_with_precision(average, precision: 2).to_f
   end
 
 
