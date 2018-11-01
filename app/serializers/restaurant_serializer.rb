@@ -5,5 +5,4 @@ class RestaurantSerializer < ActiveModel::Serializer
   has_many :reviews, serializer: ReviewSerializer
 
 
-
 end
