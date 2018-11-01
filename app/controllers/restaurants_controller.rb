@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
     if params[:query] != "all"
       restaurants = Restaurant.select("id", "name", "park", "resort_name", "permalink", "cuisine", "category_code").where("UPPER(name) like UPPER(:search) OR UPPER(cuisine) like UPPER(:search)", search: "%#{params[:query].downcase}%")
     else
-      restaurants =  Restaurant.select("id", "name", "park", "resort_name", "permalink", "cuisine", "category_code")
+      restaurants = Restaurant.select("id", "name", "park", "resort_name", "permalink", "cuisine", "category_code")
     end
       render json: sort_and_strip(restaurants)
   end
