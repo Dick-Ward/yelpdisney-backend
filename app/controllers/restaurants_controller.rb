@@ -14,11 +14,7 @@ class RestaurantsController < ApplicationController
   def search
     park_list = ["magic-kingdom", "epcot", "hollywood-studios", "animal-kingdom", "blizzard-beach", "typhoon-lagoon"]
     if params[:query] != "all"
-      restaurants = Restaurant.all.select do |restaurant|
-        if restaurant.name.downcase.include?(params[:query].downcase) || restaurant.cuisine.downcase.include?(params[:query].downcase)
-          true
-        end
-      end
+      restaurants = Restaurant.where("UPPER(name) like UPPER(:search) OR UPPER(cuisine) like UPPER(:search)", search: "%#{params[:query].downcase}%")
     else
       restaurants = Restaurant.all
     end
@@ -32,10 +28,6 @@ class RestaurantsController < ApplicationController
     restaurant_names = restaurant_list.map{|restaurant| {id: restaurant.id, name: restaurant.name, park:restaurant.park, resort_name: restaurant.resort_name, permalink: restaurant.permalink, cuisine:restaurant.cuisine, category_code: restaurant.category_code, average_rating: restaurant.average_rating }}
   end
 
-  def average_rating
-    average = (average_quality + average_cleanliness + average_service + average_value) / 4
-    number_with_precision(average, precision: 2).to_f
-  end
 
 
 end
