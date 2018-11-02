@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   def show
     restaurant = Restaurant.find_by(permalink: params[:id])
     if stale?(restaurant)
-      render json: restaurant
+      render json: RestaurantSerializer.new(restaurant)
     end
   end
 
