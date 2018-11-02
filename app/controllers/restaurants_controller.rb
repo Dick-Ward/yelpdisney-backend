@@ -8,7 +8,9 @@ class RestaurantsController < ApplicationController
 
   def show
     restaurant = Restaurant.find_by(permalink: params[:id])
-    render json: restaurant
+    if stale?(restaurant)
+      render json: restaurant
+    end
   end
 
   def search
