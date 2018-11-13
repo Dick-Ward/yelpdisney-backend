@@ -16,8 +16,10 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    review = Review.find_by(permalink: params[:id])
-    render json: review
+    review = Review.find(params[:id])
+     if stale?(review)
+       render json: review
+     end
   end
 
 

@@ -2,25 +2,22 @@ class RestaurantsController < ApplicationController
       skip_before_action :authorized
 
   def index
-    restaurants = Restaurant.all
+    restaurants =  Restaurant.select("id", "name", "park", "resort_name", "permalink", "cuisine", "category_code")
     render json: sort_and_strip(restaurants)
   end
 
   def show
     restaurant = Restaurant.find_by(permalink: params[:id])
-    render json: restaurant
+
+      render json: RestaurantSerializer.new(restaurant)
+
   end
 
   def search
-    park_list = ["magic-kingdom", "epcot", "hollywood-studios", "animal-kingdom", "blizzard-beach", "typhoon-lagoon"]
     if params[:query] != "all"
-      restaurants = Restaurant.all.select do |restaurant|
-        if restaurant.name.downcase.include?(params[:query].downcase) || restaurant.cuisine.downcase.include?(params[:query].downcase)
-          true
-        end
-      end
+      restaurants = Restaurant.select("id", "name", "park", "resort_name", "permalink", "cuisine", "category_code").where("UPPER(name) like UPPER(:search) OR UPPER(cuisine) like UPPER(:search)", search: "%#{params[:query].downcase}%")
     else
-      restaurants = Restaurant.all
+      restaurants = Restaurant.select("id", "name", "park", "resort_name", "permalink", "cuisine", "category_code")
     end
       render json: sort_and_strip(restaurants)
   end
@@ -32,10 +29,6 @@ class RestaurantsController < ApplicationController
     restaurant_names = restaurant_list.map{|restaurant| {id: restaurant.id, name: restaurant.name, park:restaurant.park, resort_name: restaurant.resort_name, permalink: restaurant.permalink, cuisine:restaurant.cuisine, category_code: restaurant.category_code, average_rating: restaurant.average_rating }}
   end
 
-  def average_rating
-    average = (average_quality + average_cleanliness + average_service + average_value) / 4
-    number_with_precision(average, precision: 2).to_f
-  end
 
 
 end
