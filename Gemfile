@@ -44,3 +44,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "jwt", "~> 2.1"
 
 gem "figaro", "~> 1.1"
+
+ruby "2.5.1"
