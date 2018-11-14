@@ -70,5 +70,3 @@ end
 
 Restaurant.find(145).update(category_code: "food_cart")
 Restaurant.find(205).update(category_code: "room_service")
-Restaurant.all.find{|restaurant| restaurant.name.include?("Festival")}.delete
-Restaurant.all.find{|restaurant| restaurant.name.include?("Contemporary and Bay Lake")}.delete
